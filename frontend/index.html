@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evidence Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ LOGIN ============ -->
+  <section id="login" hidden>
+    <form class="login-card" onsubmit="doLogin(event)">
+      <div class="login-tag"><span class="hole"></span>Evidence Tracker</div>
+      <h1>Log in to the evidence room</h1>
+      <p class="muted">Use the account your administrator created for you.</p>
+      <label>Email
+        <input type="email" id="l-email" value="admin@evidence.local" required autocomplete="username">
+      </label>
+      <label>Password
+        <input type="password" id="l-pass" value="admin123" required autocomplete="current-password">
+      </label>
+      <p id="l-error" class="error" role="alert"></p>
+      <button class="btn primary" type="submit">Log in</button>
+    </form>
+  </section>
+
+  <!-- ============ APP ============ -->
+  <div id="app" hidden>
+    <aside>
+      <div class="brand"><span class="mark">E</span> Evidence Tracker</div>
+      <nav id="nav">
+        <button data-view="dashboard" class="active">Dashboard</button>
+        <button data-view="cases">Cases</button>
+        <button data-view="evidence">Evidence</button>
+        <button data-view="locations">Storage locations</button>
+        <button data-view="tags">Tags</button>
+        <button data-view="users">Team</button>
+      </nav>
+      <div class="who">
+        <strong id="who-name"></strong>
+        <span id="who-role" class="muted"></span>
+        <button class="btn ghost" onclick="logout()">Log out</button>
+      </div>
+    </aside>
+
+    <main>
+      <header><h1 id="page-title">Dashboard</h1></header>
+      <div id="view"></div>
+    </main>
+  </div>
+
+  <dialog id="modal">
+    <div class="modal-head">
+      <h2 id="modal-title"></h2>
+      <button class="close" onclick="closeModal()" aria-label="Close">&times;</button>
+    </div>
+    <div id="modal-body"></div>
+  </dialog>
+
+  <div id="toast" role="status"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
