@@ -24,7 +24,7 @@ public class Main {
     static final Path FRONTEND = Path.of("..", "frontend").toAbsolutePath().normalize();
 
     public static void main(String[] args) throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        Class.forName("org.mariadb.jdbc.Driver");
         try (var c = Db.get()) {
             System.out.println("Connected to MySQL: " + c.getMetaData().getURL());
         } catch (Exception e) {
